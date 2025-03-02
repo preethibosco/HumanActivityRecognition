@@ -10,3 +10,6 @@ Common classification algorithms used for Human Activity Recognition (HAR) inclu
 - `Logistic Regression`
 - `Naive Bayes`
 - `Convolutional Neural Networks (CNNs)`, with CNNs often considered the most effective for complex activity recognition due to their ability to extract features from time-series sensor data effectively
+- `LSTM`
+
+
