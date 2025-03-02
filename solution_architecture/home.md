@@ -30,3 +30,13 @@ In the solution architecture, we would like to have following,
   - Model Development & Training
   - Deployment (online ML Services)
   - Continuous Model and Monitoring
+    - Data or Concept Drift
+    - Model Performance problems
+    - Data Quality Problem
+    - Model Bias
+    - Application Performance
+    - Infrastucture Usage
+
+
+As we are a working in a squad, a MLOps way of approaching this problem is essential. 
+We can use `MLRun` (https://docs.mlrun.org/en/latest/index.html)  is an open-source AI orchestration framework for managing ML and generative AI applications across their lifecycle. It automates data preparation, model tuning, customization, validation and optimization of ML models, LLMs and live AI applications over elastic resources. MLRun enables the rapid deployment of scalable real-time serving and application pipelines, while providing built-in observability and flexible deployment options, supporting multi-cloud, hybrid, and on-prem environments
