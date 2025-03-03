@@ -5,6 +5,8 @@
 ### Setup MLRun - MLOps Orchestration Framewok
 ---
 
+This is inspired by https://docs.mlrun.org/en/v1.6.4/install/local-docker.html#install-local-docker
+
 ```
 PS C:\Users\swara> docker --version
 Docker version 26.1.1, build 4cf5afa
