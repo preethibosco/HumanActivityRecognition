@@ -6,6 +6,15 @@
 
 UCI HAR - https://www.kaggle.com/datasets/uciml/human-activity-recognition-with-smartphones/data
 
+Smartphone accelerometers measure acceleration, specifically changes in speed or velocity, along three axes (X, Y, and Z), and are used in various applications like motion detection, gaming, and even estimating distance. Here's a more detailed explanation:
+What an Accelerometer Measures:
+- `Acceleration`: Accelerometers measure the rate of change of velocity, meaning how quickly an object's speed or direction is changing. 
+- `Three Axes`: Smartphones have accelerometers that measure acceleration along three perpendicular axes: X (left-right), Y (front-back), and Z (up-down). 
+- `Units`: Acceleration is typically measured in meters per second squared (m/s²).
+
+https://medium.com/chip-monks/whats-a-gyroscope-and-accelerometer-doing-in-my-mobile-device-eb7acbdfa4e0
+https://developer.android.com/develop/sensors-and-location/sensors/sensors_motion
+
 ### Features
 ---
 
