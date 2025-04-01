@@ -8,6 +8,10 @@ import os
 # --- Configuration ---
 ARTIFACTS_DIR = "saved_artifacts"
 IMAGES_DIR = "images"
+APP_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Construct absolute paths to artifacts relative to the app's location
+ARTIFACTS_DIR_ABS = os.path.join(APP_DIR, "saved_artifacts") # Assumes saved_artifacts is in the same dir as app.py
 
 # --- Load Artifacts (Cached for Performance) ---
 @st.cache_resource
@@ -24,6 +28,8 @@ def load_joblib_data(path):
 
 # Construct full paths
 # ... (paths remain the same) ...
+
+ARTIFACTS_DIR=ARTIFACTS_DIR_ABS
 log_reg_path = os.path.join(ARTIFACTS_DIR, "log_reg_model.joblib")
 rf_model_path = os.path.join(ARTIFACTS_DIR, "rf_model.joblib")
 lstm_model_path = os.path.join(ARTIFACTS_DIR, "lstm_model.h5")
