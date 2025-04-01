@@ -78,7 +78,7 @@ else:
 # --- Main Panel Display ---
 st.title("🚶‍♂️ UCI HAR Activity Prediction 🚶‍♀️")
 # --- Add Header Image ---
-header_image_url = "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+header_image_url = "https://images.theconversation.com/files/505850/original/file-20230123-14-iwjhhc.jpg?ixlib=rb-4.1.0&q=45&auto=format&w=926&fit=clip"
 st.markdown( """ <style> [data-testid="stImage"] > img { max-height: 250px; object-fit: cover; } </style> """, unsafe_allow_html=True )
 try:
     st.image(header_image_url, use_container_width=True)
