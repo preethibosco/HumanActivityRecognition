@@ -9,6 +9,7 @@ ARTIFACTS_DIR = "saved_artifacts"
 FINAL_COLUMNS_PATH = os.path.join(ARTIFACTS_DIR, "final_columns.joblib")
 # Changed output filename to reflect content
 OUTPUT_CSV_PATH = "har_test_sample_10_stratified_with_labels.csv"
+OUTPUT_CSV_PATH1 = "har_test_sample_10_stratified.csv"
 NUM_SAMPLES = 10
 RANDOM_STATE = 42
 
@@ -52,6 +53,8 @@ try:
 
             # 6. **Combine features (X_sample) and labels (y_sample) into one DataFrame**
             output_df = X_sample.reset_index(drop=True) # Use reset_index for clean assignment
+            output_df.to_csv(OUTPUT_CSV_PATH1, index=False)
+            print(f"Successfully saved {len(output_df)} stratified samples (features) with headers to: {OUTPUT_CSV_PATH1}")
             # Add the labels Series as a new column named 'Activity'
             output_df['Activity'] = y_sample.reset_index(drop=True)
             print("Combined features and original activity labels for the sample.")
