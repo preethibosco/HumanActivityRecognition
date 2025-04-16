@@ -6,19 +6,19 @@ Link to dataset used https://github.com/preethibosco/HumanActivityRecognition/tr
 
 <b>Instrcution to load & train model</b>
 
-Part 1(UCI HAR) :<br>
+<b>Part 1(UCI HAR) :</b><br>
 Data engineering, feature engineering , Model training, Model evaluation with UCI dataset <br>
 https://github.com/preethibosco/HumanActivityRecognition/tree/main/DataSets/UCI-HAR  <br>
 Run the notebook @ <br>
 https://github.com/preethibosco/HumanActivityRecognition/blob/main/project/model-training/HAR-LOGREG-LSTM.ipynb <br>
 
-Part 2(Capture24) :<br>
+<b>Part 2(Capture24) :</b><br>
 Data engineering, feature engineering , Model training, Model evaluation with capture24 dataset <br>
 https://github.com/preethibosco/HumanActivityRecognition/tree/main/DataSets/Capture24 <br>
 Run the notebook @ <br>
 https://github.com/preethibosco/HumanActivityRecognition/blob/main/project/model-training/Capture24.ipynb <br>
 
-Part 3(WISDM) :<br>
+<b>Part 3(WISDM) :</b><br>
 Data engineering, feature engineering , Model training, Model evaluation with WISDM dataset <br>
 https://github.com/preethibosco/HumanActivityRecognition/tree/main/DataSets/WISDM <br>
 Run the notebook @ <br>
@@ -27,7 +27,7 @@ https://github.com/preethibosco/HumanActivityRecognition/blob/main/project/model
 
 <b>Deployment</b>
 
-Part 4(Application - stremlit) :<br>
+<b>Part 4(Application - stremlit) :</b><br>
 Run the model training & serialise and store learned model as joblib file.<br>
 https://github.com/preethibosco/HumanActivityRecognition/blob/main/project/MLSERVER/UCI_Ver2.ipynb <br>
 
@@ -43,5 +43,5 @@ Run & start streamlit app with following command:
 streamlit run app.py
 
 
-Part 5(API -FastAPI):<br>
+<b>Part 5(API -FastAPI):</b><br>
 
