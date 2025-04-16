@@ -40,6 +40,8 @@ Store data set in current folder <br>
 Run https://github.com/preethibosco/HumanActivityRecognition/blob/main/project/MLSERVER/csv_generation.py to generate randomised sample for testing <br>
 
 Run & start streamlit app with following command:
+
+https://github.com/preethibosco/HumanActivityRecognition/blob/main/project/MLSERVER/app.py
 streamlit run app.py
 
 
