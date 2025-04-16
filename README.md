@@ -1,114 +1,47 @@
-## Human Activity Recognition
----
+This file contains steps and scripts details to be run to reproduce our work for <b>
+Human Activity Recognition for Health Monitoring Using Wearable Devices by group 7</b> <br>
+
+Git Hub Repo(Public) : https://github.com/preethibosco/HumanActivityRecognition<br>
+Link to dataset used https://github.com/preethibosco/HumanActivityRecognition/tree/main/DataSets  <br>
+
+<b>Instrcution to load & train model</b>
+
+Part 1(UCI HAR) :<br>
+Data engineering, feature engineering , Model training, Model evaluation with UCI dataset <br>
+https://github.com/preethibosco/HumanActivityRecognition/tree/main/DataSets/UCI-HAR  <br>
+Run the notebook @ <br>
+https://github.com/preethibosco/HumanActivityRecognition/blob/main/project/model-training/HAR-LOGREG-LSTM.ipynb <br>
+
+Part 2(Capture24) :<br>
+Data engineering, feature engineering , Model training, Model evaluation with capture24 dataset <br>
+https://github.com/preethibosco/HumanActivityRecognition/tree/main/DataSets/Capture24 <br>
+Run the notebook @ <br>
+https://github.com/preethibosco/HumanActivityRecognition/blob/main/project/model-training/Capture24.ipynb <br>
+
+Part 3(WISDM) :<br>
+Data engineering, feature engineering , Model training, Model evaluation with WISDM dataset <br>
+https://github.com/preethibosco/HumanActivityRecognition/tree/main/DataSets/WISDM <br>
+Run the notebook @ <br>
+https://github.com/preethibosco/HumanActivityRecognition/blob/main/project/model-training/WISDM-RF-XG-LR.ipynb <br>
 
 
-### Setup MLRun - MLOps Orchestration Framewok
----
+<b>Deployment</b>
 
-This is inspired by https://docs.mlrun.org/en/v1.6.4/install/local-docker.html#install-local-docker
+Part 4(Application - stremlit) :<br>
+Run the model training & serialise and store learned model as joblib file.<br>
+https://github.com/preethibosco/HumanActivityRecognition/blob/main/project/MLSERVER/UCI_Ver2.ipynb <br>
 
-```
-PS C:\Users\swara> docker --version
-Docker version 26.1.1, build 4cf5afa
-PS C:\Users\swara> docker-compose --version
-Docker Compose version v2.27.0-desktop.2
-```
+Clone the folder from <br>
+https://github.com/preethibosco/HumanActivityRecognition/tree/main/project/MLSERVER <br>
+
+Create python virtual environment with requirement file @ https://github.com/preethibosco/HumanActivityRecognition/blob/main/project/MLSERVER/requirements.txt <br>
+
+Store data set in current folder <br>
+Run https://github.com/preethibosco/HumanActivityRecognition/blob/main/project/MLSERVER/csv_generation.py to generate randomised sample for testing <br>
+
+Run & start streamlit app with following command:
+streamlit run app.py
 
 
-```
-services:
-  init_nuclio:
-    image: alpine:3.18
-    command:
-      - "/bin/sh"
-      - "-c"
-      - |
-        mkdir -p /etc/nuclio/config/platform; \
-        cat << EOF | tee /etc/nuclio/config/platform/platform.yaml
-        runtime:
-          common:
-            env:
-              MLRUN_DBPATH: http://${HOST_IP:?err}:8080
-        local:
-          defaultFunctionContainerNetworkName: mlrun
-          defaultFunctionRestartPolicy:
-            name: always
-            maxRetryCount: 0
-          defaultFunctionVolumes:
-            - volume:
-                name: mlrun-stuff
-                hostPath:
-                  path: ${SHARED_DIR:?err}
-              volumeMount:
-                name: mlrun-stuff
-                mountPath: /home/jovyan/data/
-        logger:
-          sinks:
-            myStdoutLoggerSink:
-              kind: stdout
-          system:
-            - level: debug
-              sink: myStdoutLoggerSink
-          functions:
-            - level: debug
-              sink: myStdoutLoggerSink
-        EOF
-    volumes:
-      - nuclio-platform-config:/etc/nuclio/config
-
-  mlrun-api:
-    image: "mlrun/mlrun-api:${TAG:-1.6.3}"
-    ports:
-      - "8080:8080"
-    environment:
-      MLRUN_ARTIFACT_PATH: "${SHARED_DIR}/{{project}}"
-      # using local storage, meaning files / artifacts are stored locally, so we want to allow access to them
-      MLRUN_HTTPDB__REAL_PATH: /data
-      MLRUN_HTTPDB__DATA_VOLUME: "${SHARED_DIR}"
-      MLRUN_LOG_LEVEL: DEBUG
-      MLRUN_NUCLIO_DASHBOARD_URL: http://nuclio:8070
-      MLRUN_HTTPDB__DSN: "sqlite:////data/mlrun.db?check_same_thread=false"
-      MLRUN_UI__URL: http://localhost:8060
-      # not running on k8s meaning no need to store secrets
-      MLRUN_SECRET_STORES__KUBERNETES__AUTO_ADD_PROJECT_SECRETS: "false"
-      # let mlrun control nuclio resources
-      MLRUN_HTTPDB__PROJECTS__FOLLOWERS: "nuclio"
-    volumes:
-      - "${SHARED_DIR:?err}:/data"
-    networks:
-      - mlrun
-
-  mlrun-ui:
-    image: "mlrun/mlrun-ui:${TAG:-1.6.3}"
-    ports:
-      - "8060:8090"
-    environment:
-      MLRUN_API_PROXY_URL: http://mlrun-api:8080
-      MLRUN_NUCLIO_MODE: enable
-      MLRUN_NUCLIO_API_URL: http://nuclio:8070
-      MLRUN_NUCLIO_UI_URL: http://localhost:8070
-    networks:
-      - mlrun
-
-  nuclio:
-    image: "quay.io/nuclio/dashboard:${NUCLIO_TAG:-stable-amd64}"
-    ports:
-      - "8070:8070"
-    environment:
-      NUCLIO_DASHBOARD_EXTERNAL_IP_ADDRESSES: "${HOST_IP:?err}"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - nuclio-platform-config:/etc/nuclio/config
-    depends_on:
-      - init_nuclio
-    networks:
-      - mlrun
-
-volumes:
-  nuclio-platform-config: {}
-
-networks:
-  mlrun:
-    name: mlrun
-```
+Part 5(API -FastAPI):<br>
 
