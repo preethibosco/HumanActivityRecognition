@@ -47,3 +47,11 @@ streamlit run app.py
 
 <b>Part 5(API -FastAPI):</b><br>
 
+To perform online inferencing, we need following steps
+
+| Step # | Step | 
+| ---    | ---- | 
+| 1 |  Save the model in a serialization format, we used Joblib |
+| 2 |  Develop a FastAPI application with an API route, and in the logic, load the model, take JSON request which is validated by Python Pydantic and use the serialized model to inference and reply |
+| 3 |  Run the FastAPI app and using any REST client tool (example Insomnia) - try out a request and response |
+
