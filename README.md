@@ -109,3 +109,13 @@ def index():
 def predict_car_type(data:HAR):
 
 ```
+
+#### 3. Run the FastAPI app and using any REST client tool
+----
+
+Make a POST call at http://127.0.0.1:8000/har/predict
+![image](https://github.com/user-attachments/assets/30a179fa-76bb-4f0a-88c5-6d150f7f2b43)
+
+and the API provides the activity classification
+![image](https://github.com/user-attachments/assets/a17efa4b-a39d-400d-9142-32c562bfaa0b)
+
