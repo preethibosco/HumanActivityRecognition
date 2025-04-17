@@ -79,6 +79,33 @@ print(predictions[0])
 #### 2. Develop a FastAPI application 
 ----
 
-Please refer to the code at 
+Please refer to the code at https://github.com/preethibosco/HumanActivityRecognition/tree/main/project/MLSERVER/APIDEPLOY
+The human_activity_record.py represents the pydantic request model
 
-https://github.com/preethibosco/HumanActivityRecognition/tree/main/project/MLSERVER/APIDEPLOY
+```
+from pydantic import BaseModel
+
+class HAR(BaseModel):
+  
+  
+  tBodyAccDmeanBDX: float 
+  tBodyAccDmeanBDY: float
+  tBodyAccDmeanBDZ: float
+```
+
+and the app.py serves the API code
+
+```
+app = FastAPI()
+joblib_in = open("har-recommender.joblib","rb")
+model=joblib.load(joblib_in)
+
+@app.get('/')
+def index():
+    return {'message': 'Human Activity Recognition ML API'}
+
+
+@app.post('/har/predict')
+def predict_car_type(data:HAR):
+
+```
