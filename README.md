@@ -58,3 +58,20 @@ To perform online inferencing, we need following steps
 #### 1. Save the model in a serialization format, we used Joblib
 ---
 
+Run https://github.com/preethibosco/HumanActivityRecognition/blob/main/project/model-training/HAR-LOGREG-LSTM.ipynb. The section that generates the model file is below, where the logistic regression model that we built gets serialized to a joblib file.
+
+```
+import joblib
+joblib.dump(log_reg, 'har-recommender.joblib')
+
+```
+
+You can test the serialization in the notebook code as well,
+
+```
+model = joblib.load("har-recommender.joblib")
+
+predictions = model.predict(X_test[0:1])
+print(predictions[0])
+
+```
