@@ -75,3 +75,10 @@ predictions = model.predict(X_test[0:1])
 print(predictions[0])
 
 ```
+
+#### 2. Develop a FastAPI application 
+----
+
+Please refer to the code at 
+
+https://github.com/preethibosco/HumanActivityRecognition/tree/main/project/MLSERVER/APIDEPLOY
