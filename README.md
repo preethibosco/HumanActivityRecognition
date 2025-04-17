@@ -112,7 +112,7 @@ def predict_car_type(data:HAR):
 
 #### 3. Run the FastAPI app and using any REST client tool
 ----
-
+Refer https://github.com/preethibosco/HumanActivityRecognition/blob/main/project/MLSERVER/APIDEPLOY/read.md for deployment steps <br>
 Make a POST call at http://127.0.0.1:8000/har/predict
 ![image](https://github.com/user-attachments/assets/30a179fa-76bb-4f0a-88c5-6d150f7f2b43)
 
